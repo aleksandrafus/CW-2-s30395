@@ -52,7 +52,8 @@ public class CoolingContainer(double height, double weight, double depth, double
                 return Temperature >= 20.5;
             case "Eggs":
                 return Temperature >= 19;
-
+            default:
+                return false;
             
         };
         
