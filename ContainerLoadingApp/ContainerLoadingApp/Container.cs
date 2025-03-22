@@ -23,7 +23,7 @@ public abstract class Container (double height, double weight, double depth, dou
         CargoMass = 0;
     }
 
-    public void LoadCargo(double cargoMass)
+    public virtual void LoadCargo(double cargoMass)
     {
         if (CargoMass + cargoMass > MaxCapacity)
             throw new OverfillException("Cargo mass exceeds max capacity");
