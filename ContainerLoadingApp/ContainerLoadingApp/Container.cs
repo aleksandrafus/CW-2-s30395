@@ -3,6 +3,7 @@
 public abstract class Container (double height, double weight, double depth, double maxCapacity, string type) : IContainer
 {
 
+    public string Type { get; } = type;
     public double CargoMass { get; protected set; }
 
     public double Height { get; } = height;
@@ -29,5 +30,18 @@ public abstract class Container (double height, double weight, double depth, dou
             throw new OverfillException();
         else 
             CargoMass += product.Weight;
+    }
+
+    public override string ToString()
+    {
+        return $"""
+                 Container {SerialNumber}
+                    Height: {Height}
+                    Weight: {Weight}
+                    Depth: {Depth}
+                    MaxCapacity: {MaxCapacity}
+                    Type: {Type}
+                    Current CargoMass: {CargoMass}
+                 """;
     }
 }

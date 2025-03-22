@@ -17,6 +17,24 @@ public class LiquidContainer(double height, double weight, double depth, double 
         double limit = IsHazardous ? MaxCapacity * 0.5 : MaxCapacity * 0.9;
         if (product.Weight > limit)
             throw new OverfillException($"Liquid cargo exceeded allowed limit of {limit}kg.");
+        else
+        {
+            CargoMass += product.Weight;
+        }
+    }
+    
+    public override string ToString()
+    {
+        return $"""
+                Container {SerialNumber}
+                   Height: {Height}
+                   Weight: {Weight}
+                   Depth: {Depth}
+                   MaxCapacity: {MaxCapacity}
+                   Type: {Type}
+                   IsHazardous: {isHazardous}
+                   Current CargoMass: {CargoMass}
+                """;
     }
     
 }

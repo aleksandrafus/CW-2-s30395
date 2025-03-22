@@ -28,4 +28,19 @@ public class GasContainer(double height, double weight, double depth, double max
             CargoMass += product.Weight;
     }
     
+    public override string ToString()
+    {
+        return $"""
+                Container {SerialNumber}
+                   Height: {Height}
+                   Weight: {Weight}
+                   Depth: {Depth}
+                   MaxCapacity: {MaxCapacity}
+                   Type: {Type}
+                   Pressure: {Pressure}
+                   IsHazardous: {isHazardous}
+                   Current CargoMass: {CargoMass}
+                """;
+    }
+    
 }

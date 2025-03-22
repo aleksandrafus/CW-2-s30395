@@ -1,12 +1,22 @@
-﻿using System.Diagnostics;
-
+﻿
 namespace ContainerLoadingApp;
 
-public class CoolingContainer(double height, double weight, double depth, double maxCapacity, string productType, double temperature) 
-    : Container(height, weight, depth, maxCapacity, "C") 
+public class CoolingContainer : Container
 {
-    public string ProductType { get; set; } = productType;
-    public double Temperature { get; set; } = temperature;
+    public string ProductType { get; set; }
+    public double Temperature { get; set; }
+    
+    
+    public CoolingContainer(double height, double weight, double depth, double maxCapacity, string productType, double temperature)
+        : base(height, weight, depth, maxCapacity, "C")  
+    {
+        this.ProductType = productType;
+        this.Temperature = temperature;
+        
+        if(!IsTemperatureValid())
+            throw new ArgumentException("Invalid product type. The temperature is not suitable for this product.");
+    }
+    
     
     public override void LoadCargo(Product product)
     {
@@ -18,19 +28,13 @@ public class CoolingContainer(double height, double weight, double depth, double
         {
             throw new ArgumentException($"Product must be of type: {ProductType}");
         }
-        else if (IsTemperatureValid(product))
-        {
-            CargoMass += product.Weight;
-        }
-        else if (!IsTemperatureValid(product))
-        {
-            throw new ArgumentException($"Product needs different temperature. This containers temperature is {Temperature}");
-        }
+        
+        CargoMass += product.Weight;
     }
 
-    private bool IsTemperatureValid(Product product)
+    private bool IsTemperatureValid()
     {
-        switch (product.ProductType)
+        switch (ProductType)
         {
             case "Bananas":
                 return Temperature >= 13.3;
@@ -55,7 +59,22 @@ public class CoolingContainer(double height, double weight, double depth, double
             default:
                 return false;
             
-        };
+        }
         
+    }
+    
+    public override string ToString()
+    {
+        return $"""
+                Container {SerialNumber}
+                   Height: {Height}
+                   Weight: {Weight}
+                   Depth: {Depth}
+                   MaxCapacity: {MaxCapacity}
+                   Type: {Type}
+                   Temperature: {Temperature}
+                   ProductType: {ProductType}
+                   Current CargoMass: {CargoMass}
+                """;
     }
 }
