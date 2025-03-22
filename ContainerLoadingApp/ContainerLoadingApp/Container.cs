@@ -1,0 +1,33 @@
+﻿namespace ContainerLoadingApp;
+
+public abstract class Container (double height, double weight, double depth, double maxCapacity, string type) : IContainer
+{
+
+    public double CargoMass { get; private set; }
+
+    public double Height { get; } = height;
+    
+    public double Weight { get; } = weight;
+    
+    public double Depth { get; } = depth;
+    public double MaxCapacity { get; } = maxCapacity;
+
+    
+    private static int _idCounter = 1;
+
+    public string SerialNumber { get; } = $"KON-{type}-{_idCounter++}";
+
+
+    public void UnloadCargo()
+    {
+        CargoMass = 0;
+    }
+
+    public void LoadCargo(double cargoMass)
+    {
+        if (CargoMass + cargoMass > MaxCapacity)
+            throw new OverfillException("Cargo mass exceeds max capacity");
+        else 
+            CargoMass += cargoMass;
+    }
+}
