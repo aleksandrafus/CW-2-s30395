@@ -3,7 +3,7 @@
 public abstract class Container (double height, double weight, double depth, double maxCapacity, string type) : IContainer
 {
 
-    public double CargoMass { get; private set; }
+    public double CargoMass { get; protected set; }
 
     public double Height { get; } = height;
     
@@ -18,16 +18,16 @@ public abstract class Container (double height, double weight, double depth, dou
     public string SerialNumber { get; } = $"KON-{type}-{_idCounter++}";
 
 
-    public void UnloadCargo()
+    public virtual void UnloadCargo()
     {
         CargoMass = 0;
     }
 
-    public virtual void LoadCargo(double cargoMass)
+    public virtual void LoadCargo(double cargo)
     {
-        if (CargoMass + cargoMass > MaxCapacity)
-            throw new OverfillException("Cargo mass exceeds max capacity");
+        if (CargoMass + cargo > MaxCapacity)
+            throw new OverfillException();
         else 
-            CargoMass += cargoMass;
+            CargoMass += cargo;
     }
 }
