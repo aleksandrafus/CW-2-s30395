@@ -9,6 +9,6 @@ public interface IContainer
     double MaxCapacity { get; }
     string SerialNumber { get; }
     
-    void LoadCargo(double cargoMass);
+    void LoadCargo(Product product);
     void UnloadCargo();
 }

@@ -12,10 +12,10 @@ public class LiquidContainer(double height, double weight, double depth, double 
             $"Warning! Dangerous situation involving a liquid container happened! " +
             $"Container number:{SerialNumber}");
     }
-    public override void LoadCargo(double cargo)
+    public override void LoadCargo(Product product)
     {
         double limit = IsHazardous ? MaxCapacity * 0.5 : MaxCapacity * 0.9;
-        if (cargo > limit)
+        if (product.Weight > limit)
             throw new OverfillException($"Liquid cargo exceeded allowed limit of {limit}kg.");
     }
     

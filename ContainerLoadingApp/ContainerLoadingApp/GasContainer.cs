@@ -20,12 +20,12 @@ public class GasContainer(double height, double weight, double depth, double max
         CargoMass = CargoMass * 0.05;
     }
 
-    public override void LoadCargo(double cargo)
+    public override void LoadCargo(Product product)
     {
-        if (CargoMass + cargo > MaxCapacity)
+        if (CargoMass + product.Weight > MaxCapacity)
             throw new OverfillException($"Liquid cargo exceeded allowed limit of {MaxCapacity}kg.");
         else 
-            CargoMass += cargo;
+            CargoMass += product.Weight;
     }
     
 }

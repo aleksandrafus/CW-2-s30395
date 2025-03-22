@@ -23,11 +23,11 @@ public abstract class Container (double height, double weight, double depth, dou
         CargoMass = 0;
     }
 
-    public virtual void LoadCargo(double cargo)
+    public virtual void LoadCargo(Product product)
     {
-        if (CargoMass + cargo > MaxCapacity)
+        if (CargoMass + product.Weight > MaxCapacity)
             throw new OverfillException();
         else 
-            CargoMass += cargo;
+            CargoMass += product.Weight;
     }
 }
