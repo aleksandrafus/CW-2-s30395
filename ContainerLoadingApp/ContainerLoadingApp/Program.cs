@@ -68,45 +68,4 @@ containerShip1.MoveContainerToOtherShip("KON-L-1", containerShip2);
 Console.WriteLine($"ContainerShip1 after moving container:\n {containerShip1}\n");
 Console.WriteLine($"ContainerShip2 after moving container:\n {containerShip2}\n");
 
-
-// APLIKACJA KONSOLOWA
-Console.WriteLine("CONSOLE APP\n\n");
-
-bool running = true;
-
-while (running)
-{
-    List<ContainerShip> containerShips = new List<ContainerShip>();
-    
-    Console.WriteLine("Container ship list: ");
-    if( containerShips.Count == 0 )
-    {
-        Console.WriteLine("Empty");
-    }
-    else
-    {
-        foreach (var containerShip in containerShips)
-        {
-            Console.WriteLine($"\n{containerShip}");
-        }
-    }
-    
-    
-    List<Container> containers = new List<Container>();
-    
-    Console.WriteLine("Container list: ");
-    if( containers.Count == 0 )
-    {
-        Console.WriteLine("Empty");
-    }
-    else
-    {
-        foreach (var container in containers)
-        {
-            Console.WriteLine($"\n{container}");
-        }
-    }
-    
-    Console.WriteLine("\nAdd container.");
-    
-}
+ConsoleContainerLoadingApp.StartApp();

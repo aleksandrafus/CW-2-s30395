@@ -17,7 +17,7 @@ public class GasContainer(double height, double weight, double depth, double max
     
     public override void UnloadCargo()
     {
-        CargoMass = CargoMass * 0.05;
+        CargoMass *= 0.05;
     }
 
     public override void LoadCargo(Product product)
@@ -38,7 +38,7 @@ public class GasContainer(double height, double weight, double depth, double max
                    MaxCapacity: {MaxCapacity}
                    Type: {Type}
                    Pressure: {Pressure}
-                   IsHazardous: {isHazardous}
+                   IsHazardous: {IsHazardous}
                    Current CargoMass: {CargoMass}
                 """;
     }

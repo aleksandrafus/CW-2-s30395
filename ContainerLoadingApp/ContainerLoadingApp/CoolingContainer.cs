@@ -10,8 +10,8 @@ public class CoolingContainer : Container
     public CoolingContainer(double height, double weight, double depth, double maxCapacity, string productType, double temperature)
         : base(height, weight, depth, maxCapacity, "C")  
     {
-        this.ProductType = productType;
-        this.Temperature = temperature;
+        ProductType = productType;
+        Temperature = temperature;
         
         if(!IsTemperatureValid())
             throw new ArgumentException("Invalid product type. The temperature is not suitable for this product.");
@@ -34,33 +34,20 @@ public class CoolingContainer : Container
 
     private bool IsTemperatureValid()
     {
-        switch (ProductType)
+        return ProductType switch
         {
-            case "Bananas":
-                return Temperature >= 13.3;
-            case "Chocolate":
-                return Temperature >= 18;
-            case "Fish":    
-                return Temperature >= 2;
-            case "Meat":
-                return Temperature >= -15;
-            case "Ice cream":
-                return Temperature >= -18;
-            case "Frozen pizza":
-                return Temperature >= -30;
-            case "Cheese":
-                return Temperature >= 7.2;
-            case "Sausages":
-                return Temperature >= 5;
-            case "Butter":
-                return Temperature >= 20.5;
-            case "Eggs":
-                return Temperature >= 19;
-            default:
-                return false;
-            
-        }
-        
+            "Bananas" => Temperature >= 13.3,
+            "Chocolate" => Temperature >= 18,
+            "Fish" => Temperature >= 2,
+            "Meat" => Temperature >= -15,
+            "Ice cream" => Temperature >= -18,
+            "Frozen pizza" => Temperature >= -30,
+            "Cheese" => Temperature >= 7.2,
+            "Sausages" => Temperature >= 5,
+            "Butter" => Temperature >= 20.5,
+            "Eggs" => Temperature >= 19,
+            _ => false
+        };
     }
     
     public override string ToString()

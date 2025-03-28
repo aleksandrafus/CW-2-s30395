@@ -32,7 +32,7 @@ public class LiquidContainer(double height, double weight, double depth, double 
                    Depth: {Depth}
                    MaxCapacity: {MaxCapacity}
                    Type: {Type}
-                   IsHazardous: {isHazardous}
+                   IsHazardous: {IsHazardous}
                    Current CargoMass: {CargoMass}
                 """;
     }
